@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Riwayat Pembelian | EDATAKU</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Riwayat Pembelian Layanan</h2>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Layanan</th>
+                <th>Tanggal</th>
+            </tr>
+        </thead>
+        <tbody id="historyTable"></tbody>
+    </table>
+</div>
+
+<script>
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let table = document.getElementById("historyTable");
+
+    orders.forEach((order, index) => {
+        table.innerHTML += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${order.name}</td>
+                <td>${order.email}</td>
+                <td>${order.service}</td>
+                <td>${order.date}</td>
+            </tr>
+        `;
+    });
+</script>
+
+</body>
+</html>
